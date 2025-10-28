@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="entrene_initial">¿Como vamos a entrenar hoy?</string>
+    <string name="entrene_series">Haremos series de 1km a 4:30min el Km y 2min de descanso entre series</string>
+    <string name="entrene_escaleras">Subiremos escaleras durante un minuto, lo más rápido que podamos y descansaremos bajando</string>
+    <string name="entrene_cambiosRitmo">600m a 5:30min/km, 250m a 5:00min/Km y 150m a 4min/Km</string>
+    <string name="entrene_tiradaLarga">Sal a un ritmo comodo, al menos durante 60min</string>
+    <string name="entrene_piernasGym">Sentadillas 10x3 con 50kg, sentadilllas 8x3 70Kg y sentadillas al fallo x3 50Kg</string>
+    <string name="entrene_descanso">Parece que ya has entrenado suficiente</string>
+    <string name="roll">Nuevo entrene</string>
+</resources>
