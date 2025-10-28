@@ -6,13 +6,20 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,6 +34,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,9 +76,26 @@ fun NuevoEntrene(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .wrapContentSize(Alignment.Center),
+            .wrapContentSize(Alignment.Center)
+            .verticalScroll(rememberScrollState()),//Desplazamiento encontrado en: https://developer.android.com/develop/ui/compose/touch-input/pointer-input/scroll?hl=es-419
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp)
+                .background(color = Color(0xFF6750A3)),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = "Fitness Trainer",
+                fontSize = 24.sp,
+                color = Color.White,
+                style = MaterialTheme.typography.titleLarge
+            )
+        }
+        Spacer(modifier = Modifier.height(50.dp))
+
         Image(
             modifier = modifier
                 .size(150.dp),
@@ -99,7 +124,11 @@ fun NuevoEntrene(
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier = modifier
+                .padding(bottom = 55.dp),//Espacio para que el botón de borrar no quede por debajo de los botones de menú
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             entrenes.forEach { id ->
                 Text(
                     text = stringResource(
@@ -115,6 +144,11 @@ fun NuevoEntrene(
                     textAlign = TextAlign.Center,
                     color = Color.White
                 )
+            }
+            Button(
+                onClick =
+                    { entrenes.clear() }) {
+                Text(stringResource(R.string.borrar))
             }
         }
 
